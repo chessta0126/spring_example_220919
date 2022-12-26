@@ -3,6 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
  <mapper namespace="com.example.lesson03.dao.ReviewDAO">
+    <!-- 1. SELECT(조회) -->
     <select id="selectReview" parameterType="int" resultType="com.example.lesson03.model.Review">
         SELECT
             `id`
@@ -18,4 +19,51 @@
         WHERE
         	 `id` = #{id}
     </select>
+
+    <!-- 2. INSERT(입력) -->
+    <insert id="insertReview" parameterType="com.example.lesson03.dao.ReviewDAO"> <!-- resultType 없어야 함 -->
+    	INSERT INTO `new_review`
+    	(
+    		`storeId`
+            ,`menu`          
+            ,`userName`
+            ,`point`
+            ,`review`
+            ,`createdAt`
+            ,`updatedAt`
+        )
+        VALUES
+        (
+        	#{storeId}
+        	,#{menu}          
+            ,#{userName}
+            ,#{point}
+            ,#{review}
+            ,NOW()
+            ,NOW()
+        )
+    </insert>
+
+    <insert id="insertReviewAsField" parameterType="com.example.lesson03.dao.ReviewDAO">
+    	INSERT INTO `new_review`
+    	(
+    		`storeId`
+            ,`menu`          
+            ,`userName`
+            ,`point`
+            ,`review`
+            ,`createdAt`
+            ,`updatedAt`
+        )
+        VALUES
+        (
+        	#{storeId}
+        	,#{menu}          
+            ,#{userName}
+            ,#{point}
+            ,#{review}
+            ,NOW()
+            ,NOW()
+        )
+    </insert>
  </mapper>
