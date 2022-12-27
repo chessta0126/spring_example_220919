@@ -5,6 +5,7 @@
  <mapper namespace="com.example.lesson03.dao.ReviewDAO">
     <!-- 1. SELECT(조회) -->
     <select id="selectReview" parameterType="int" resultType="com.example.lesson03.model.Review">
+    <!-- resultType은 SELECT에서만 쓴다. -->
         SELECT
             `id`
             ,`storeId`
@@ -21,7 +22,8 @@
     </select>
 
     <!-- 2. INSERT(입력) -->
-    <insert id="insertReview" parameterType="com.example.lesson03.dao.ReviewDAO"> <!-- resultType 없어야 함 -->
+    <insert id="insertReview" parameterType="com.example.lesson03.model.Review">
+    <!-- resultType은 SELECT에서만 사용 -->
     	INSERT INTO `new_review`
     	(
     		`storeId`
@@ -44,7 +46,7 @@
         )
     </insert>
 
-    <insert id="insertReviewAsField" parameterType="com.example.lesson03.dao.ReviewDAO">
+    <insert id="insertReviewAsField" parameterType="map">
     	INSERT INTO `new_review`
     	(
     		`storeId`
@@ -66,4 +68,22 @@
             ,NOW()
         )
     </insert>
+    
+    <!-- 3. UPDATE(수정) -->
+    <update id="updateReviewById" parameterType="map">
+    <!-- DAO에서 @Param으로 묶었으므로 parameterType="map"-->
+		UPDATE `new_review`
+		SET
+			`review` = #{review}
+			, `updatedAt` = NOW()
+		WHERE
+			`id` = #{id}
+	</update>
+	
+	<delete id="deleteReviewById" parameterType="int">
+		DELETE
+		FROM `new_review`
+		WHERE
+			`id` = #{id}
+	</delete>
  </mapper>

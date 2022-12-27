@@ -11,7 +11,7 @@ import com.example.lesson03.model.Review;
 @RestController
 public class Lesson03Ex02RestController {
 
-	// http://localhost:8080//lesson03/ex02/1	
+	// http://localhost:8080/lesson03/ex02/1	
 	@Autowired
 	private ReviewBO reviewBO;
 	
@@ -28,7 +28,7 @@ public class Lesson03Ex02RestController {
 	}
 
 	// 필드로 insert 하기
-	// http://localhost:8080//lesson03/ex02/2	
+	// http://localhost:8080/lesson03/ex02/2	
 	@RequestMapping("/2")
 	public String ex02_2() {
 		int row = reviewBO.addReviewAsField(4,"콤비네이션R", "chessta", 4.5, "JMT");

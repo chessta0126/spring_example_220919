@@ -37,4 +37,15 @@ public class ReviewBO {
 			) {
 		return reviewDAO.insertReviewAsField(storeId, menu, userName, point, review);
 	}
+	
+	// 3. UPDATE(수정)
+	public int updateReviewById(int id, String review) {
+		return reviewDAO.updateReviewById(id, review);
+	}
+	
+	// 4. DELETE(삭제)
+	public void deleteReviewById(int id) {
+		reviewDAO.deleteReviewById(id);
+	}
+	
 }
