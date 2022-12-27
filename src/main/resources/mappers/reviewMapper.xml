@@ -80,6 +80,7 @@
 			`id` = #{id}
 	</update>
 	
+    <!-- 4. DELETE(삭제) -->
 	<delete id="deleteReviewById" parameterType="int">
 		DELETE
 		FROM `new_review`
