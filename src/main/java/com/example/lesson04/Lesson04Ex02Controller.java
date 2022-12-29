@@ -16,7 +16,7 @@ public class Lesson04Ex02Controller {
 	// http://localhost:8080/lesson04/ex02/add_student_view
 	@GetMapping("/add_student_view")
 	public String addStudentView() {
-		return "/lesson04/addStudent";
+		return "lesson04/addStudent";
 	}
 
 	@PostMapping("/add_student")
