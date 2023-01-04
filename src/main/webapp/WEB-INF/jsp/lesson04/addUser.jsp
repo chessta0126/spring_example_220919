@@ -32,7 +32,7 @@
 			</div>	
 
 			<div class="form-group">
-				<label for="">자기소개</label>
+				<label for="introduce">자기소개</label>
 				<textarea id="introduce" name="introduce" class="form-control col-5" rows="5"></textarea>
 			</div>
 
