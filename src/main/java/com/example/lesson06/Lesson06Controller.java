@@ -1,5 +1,8 @@
 package com.example.lesson06;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.lesson04.bo.UserBO;
-import com.example.lesson04.model.User;
 
 @RequestMapping("/lesson06")
 @Controller
@@ -51,8 +53,29 @@ public class Lesson06Controller {
 		return "성공"; // AJAX 응답값은 항상 String
 	}
 	
+	// http://localhost:8080/lesson06/ex01/after_add_user_view
 	@GetMapping("/ex01/after_add_user_view")
 	public String afterAddUserView() {
 		return "/lesson06/ex01/afterAddUser";
+	}
+
+	// 이름 추가하는 화면
+	// http://localhost:8080/lesson06/ex02/add_name_view
+	@GetMapping("/ex02/add_name_view")
+	public String addNameView() {
+		return "/lesson06/ex02/addName";
+	}
+	
+	// 이름 중복 확인
+	@ResponseBody
+	@GetMapping("/ex02/is_duplication")
+	public Map<String, Boolean> isDuplication(
+			@RequestParam("name") String name
+			) {
+		
+		Map<String, Boolean> result = new HashMap<>();
+		result.put("is_duplication", userBO.existUserByName(name));
+		
+		return result;
 	}
 }
